@@ -6,8 +6,8 @@ namespace CFGParser.ArithmeticExpression
 {
 
     //Expr -> Fact
-    //Expr -> Fact+Expr+Expr+...
-    //Expr -> Fact-Expr-Expr-...
+    //Expr -> Fact+Fact+Fact+...
+    //Expr -> Fact-Fact-Fact-...
     public class Expr : IParser<IExpression>
     {
         public List<Tuple<string, IExpression>> Parse(string s)
@@ -21,7 +21,7 @@ namespace CFGParser.ArithmeticExpression
                             new AlLeastOnce<IExpression>(
                                 new SuccessivelyRight<char, IExpression>(
                                     new Symbol('+'),
-                                    new Expr()
+                                    new Fact()
                                     )
                                 )
                             ),
@@ -32,7 +32,7 @@ namespace CFGParser.ArithmeticExpression
                             new AlLeastOnce<IExpression>(
                                 new SuccessivelyRight<char, IExpression>(
                                     new Symbol('-'),
-                                    new Expr()
+                                    new Fact()
                                     )
                                 )
                             ),

@@ -5,8 +5,8 @@ using System.Linq;
 namespace CFGParser.ArithmeticExpression
 {
     //Fact -> Term
-    //Fact -> Term*Fact*Fact*...
-    //Fact -> Term/Fact/Fact/...
+    //Fact -> Term*Term*Term*...
+    //Fact -> Term/Term/Term/...
     public class Fact : IParser<IExpression>
     {
         public List<Tuple<string, IExpression>> Parse(string s)
@@ -19,7 +19,7 @@ namespace CFGParser.ArithmeticExpression
                         new AlLeastOnce<IExpression>(
                             new SuccessivelyRight<char, IExpression>(
                                 new Symbol('*'),
-                                new Fact()
+                                new Term()
                                 )
                             )
                         ),
@@ -30,7 +30,7 @@ namespace CFGParser.ArithmeticExpression
                         new AlLeastOnce<IExpression>(
                             new SuccessivelyRight<char, IExpression>(
                                 new Symbol('/'),
-                                new Fact()
+                                new Term()
                                 )
                             )
                         ),

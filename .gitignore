@@ -1,0 +1,5 @@
+*.dll
+*.pdb
+*.cache
+CFGParser/CFGParser/bin/*
+CFGParser/CFGParser/obj/*
