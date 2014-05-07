@@ -3,3 +3,4 @@
 *.cache
 CFGParser/CFGParser/bin/*
 CFGParser/CFGParser/obj/*
+*.suo
